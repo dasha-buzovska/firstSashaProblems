@@ -18,7 +18,7 @@ class Facebook {
 
     private static String getStringNumber(int number, int order, String letter) {
         if (Math.floor(number/(order/10))%10 == 0) {
-            return (int)Math.floor(number/(order/10))/10 + letter;
+            return (int)Math.floor(number/order) + letter;
         } else {
             return Math.floor(number/(order/10))/10 + letter;
         }
