@@ -1,6 +1,18 @@
 package com.company;
 
 class Numbers {
+    
+    //рахую суму римскьх чисел
+    static String sum(String expression) {
+        String left = "", right = "";
+        int i = 0;
+        while (expression.charAt(i) != '+') {
+            left = left.concat(Character.toString(expression.charAt(i)));
+            i++;
+        }
+        right = expression.substring(i + 1, expression.length());
+        return arabicToRoman(romanToArabic(left) + romanToArabic(right));
+    }
 
     static String arabicToRoman(int number) {
         String result = "";
@@ -51,7 +63,8 @@ class Numbers {
 
     private static int calculateByOrder(String number, int step) {
         int result = 0;
-        for (int i = step; i <= 9*step; i+=step) {
+        for (int i = step; i <= 9 * step; i += step) {
+            //проблема в тому, що коли воно перевіряє чи міститься в цьому IV оце V, то присвоює значення 5 і катастрофа
             if (number.contains(arabicToRoman(i))) {
                 result = i;
             }
@@ -60,7 +73,11 @@ class Numbers {
     }
 
     static int romanToArabic(String number) {
+        //гавнокод:)
         int result = 0;
+        if (number.length() > 1 && number.substring(number.length() - 2, number.length()).equals("IV")) {
+            result += -1;
+        }
         result += calculateByOrder(number, 1);
         result += calculateByOrder(number, 10);
         result += calculateByOrder(number, 100);

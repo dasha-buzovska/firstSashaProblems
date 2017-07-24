@@ -13,6 +13,8 @@ public class NumbersTest {
         assertEquals("I", Numbers.arabicToRoman(1));
         assertEquals("V", Numbers.arabicToRoman(5));
         assertEquals("CL", Numbers.arabicToRoman(150));
+        assertEquals("IV", Numbers.arabicToRoman(4));
+        assertEquals("III", Numbers.arabicToRoman(3));
     }
 
     @Test
@@ -22,6 +24,14 @@ public class NumbersTest {
         assertEquals(15, Numbers.romanToArabic("XV"));
         assertEquals(180, Numbers.romanToArabic("CLXXX"));
         assertEquals(500, Numbers.romanToArabic("D"));
+        assertEquals(3, Numbers.romanToArabic("III"));
+        assertEquals(4, Numbers.romanToArabic("IV"));
+        assertEquals(24, Numbers.romanToArabic("XXIV"));
+    }
+
+    @Test
+    public void getSum() throws Exception {
+        assertEquals("VII", Numbers.sum("III+IV"));
     }
 
 }
