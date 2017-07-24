@@ -3,22 +3,20 @@ package com.company;
 class Facebook {
 
     static String compressNumber(int number) {
-        if (number < 1000) {
+        if (number < 1e3) {
             return "" + number;
-        } else if (number >= 1000 && number < 10000) {
-            return getStringNumber(number,1000,"K");
-        } else if (number >=10000 && number < 1000000) {
-            return (int)Math.floor(number/1000) + "K";
-        } else if (number >=1000000 && number < 1000000000) {
-            return getStringNumber(number, 1000000, "M");
-        } else{
-            return getStringNumber(number, 100000000, "B");
+        } else if (number < 1e6) {
+            return getStringNumber(number, (int) 1e3, "K");
+        } else if (number < 1e9) {
+            return getStringNumber(number, (int) 1e6, "M");
+        } else {
+            return getStringNumber(number, (int) 1e9, "B");
         }
     }
 
     private static String getStringNumber(int number, int order, String letter) {
-        if (Math.floor(number/(order/10))%10 == 0) {
-            return (int)Math.floor(number/order) + letter;
+        if (number >= order*10 || number%order < order/10) {
+            return (int) Math.floor(number/order) + letter;
         } else {
             return Math.floor(number/(order/10))/10 + letter;
         }

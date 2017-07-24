@@ -1,7 +1,7 @@
 package com.company;
 
 class Numbers {
-    
+
     //рахую суму римскьх чисел
     static String sum(String expression) {
         String left = "", right = "";

@@ -16,7 +16,9 @@ public class FacebookTest {
         assertEquals("17K", Facebook.compressNumber(17965));
         assertEquals("678K", Facebook.compressNumber(678154));
         assertEquals("1.4K", Facebook.compressNumber(1457));
-
+        assertEquals("1.4M", Facebook.compressNumber(1457000));
+        assertEquals("14M", Facebook.compressNumber(14570000));
+        assertEquals("1.2B", Facebook.compressNumber(1240000000));
     }
 
     @Test
